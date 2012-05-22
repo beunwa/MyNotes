@@ -6,7 +6,7 @@ gem 'haml'
 
 group :development do
   gem "hpricot"
-  gem "ruby-parser"
+  gem "ruby_parser"
   gem "haml-rails"
 end
 
