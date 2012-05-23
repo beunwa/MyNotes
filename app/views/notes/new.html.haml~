@@ -1,0 +1,8 @@
+%h1 New note
+
+= simple_form_for @note do |f|
+  f.input :user, :label => "your name please"
+  f.input :content, :hint => "no special chars"
+  f.button :submit
+
+= link_to 'Back', notes_path

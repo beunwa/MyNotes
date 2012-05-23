@@ -1,6 +1,12 @@
 MyNotes::Application.routes.draw do
-  resources :notes
+  devise_for :users
+
+  resources :notes do
+    get "search", :on => :collection
+  end
+
   root :to => "Notes#index"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

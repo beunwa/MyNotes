@@ -4,6 +4,14 @@ gem 'rails', '3.2.3'
 
 gem 'haml'
 
+gem 'simple_form'
+
+gem 'devise'
+
+gem 'bootstrap-sass'
+
+gem 'will_paginate', '~> 3.0'
+
 group :development do
   gem "hpricot"
   gem "ruby_parser"

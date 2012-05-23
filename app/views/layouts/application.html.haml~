@@ -7,7 +7,6 @@
     %title= content_for?(:title) ? yield(:title) : "Myapp"
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}   
-    = stylesheet_link_tag    "application", :media => "all"
     = csrf_meta_tags
     = yield(:head)
   %body
@@ -22,5 +21,6 @@
             .span12
               = render 'layouts/messages'
               = yield
-          %footer            
+          %footer
+            = stylesheet_link_tag    "application", :media => "all"
             = javascript_include_tag "application"
