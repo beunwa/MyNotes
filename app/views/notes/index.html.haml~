@@ -2,10 +2,10 @@
 
 = form_tag search_notes_path, :method => "get" do
   = label_tag :q, "Search for:"
-  = text_field_tag :q, params[:q]
+  = text_field_tag :q, @q
   = submit_tag "Search" 
 
-%table.table.table-striped
+%table#notes.table.table-striped
   %tr
     %th User
     %th Content
@@ -13,16 +13,12 @@
     %th
     %th
 
-  - @notes.each do |note|
-    %tr
-      %td= note.user
-      %td= note.content
-      %td= link_to 'Show', note
-      %td= link_to 'Edit', edit_note_path(note)
-      %td= link_to 'Destroy', note, :confirm => 'Are you sure?', :method => :delete
+  = render @notes
+   
 
 %br
-= will_paginate @notes
+-#= will_paginate @notes
 %br
 %br
 = link_to 'New Note', new_note_path
+= link_to "more", "javascript:", {:id => "more_notes", :class => "btn"}

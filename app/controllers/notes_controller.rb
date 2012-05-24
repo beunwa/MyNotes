@@ -1,18 +1,32 @@
 class NotesController < ApplicationController
+  skip_before_filter :authenticate_user!, :only => [:index, :show, :search]
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.paginate(:page => params[:page])    
+    if user_signed_in?
+      @notes = current_user.notes.paginate :page => params[:page]
+    else
+      @notes = Note.paginate :page => params[:page]
+    end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {request.xhr? ? render(@notes, :layout => false) : render(:index)}
       format.json { render json: @notes }
     end
   end
 
   def search
-    @notes = Note.search(params[:q]).paginate(:page => params[:page])  
-    render :action => "index"
+    @q = params[:q]
+    if user_signed_in?
+      @notes = current_user.notes.search(@q).paginate :page => params[:page]
+    else
+      @notes = Note.search(@q).paginate :page => params[:page]
+    end
+
+    respond_to do |format|
+      format.html {request.xhr? ? render(@notes, :layout => false) : render(:index)}
+      format.json { render json: @notes }
+    end
   end
 
   # GET /notes/1
@@ -46,6 +60,7 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(params[:note])
+    @note.user = current_user
 
     respond_to do |format|
       if @note.save

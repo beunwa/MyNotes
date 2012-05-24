@@ -35,9 +35,15 @@ MyNotes::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  # Only use best-standards-support built into browsers
-  config.action_dispatch.best_standards_support = :builtin
-
   # Add the config.action_mailer.default_url_options
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  config.action_mailer.smtp_settings = {
+    :address        => "ssl://email-smtp.us-east-1.amazonaws.com",
+    :port           => "465",
+    :authentication => :plain,
+    :user_name      => 'AKIAILWJP6EEY736IQRA',
+    :password       => 'Amy3iLBr2N/UF1gsNvMAcWFAVBd+PunB3C4ZvAB5iJdP',
+    :domain         => ''
+  }
 end

@@ -1,0 +1,9 @@
+class PowerUpDevise < ActiveRecord::Migration
+  def up
+    add_column :users, :token_authenticatable
+    add_column :users, :authentication_token
+  end
+
+  def down
+  end
+end

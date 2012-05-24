@@ -72,7 +72,7 @@ MyNotes::Application.configure do
     :authentication => :plain,
     :user_name      => 'AKIAILWJP6EEY736IQRA',
     :password       => 'Amy3iLBr2N/UF1gsNvMAcWFAVBd+PunB3C4ZvAB5iJdP',
-    :domain         => ''
+    :domain         => ENV['SENDGRID_DOMAIN']
   }
 
 end

@@ -4,6 +4,8 @@ gem 'rails', '3.2.3'
 
 gem 'haml'
 
+gem 'simple_form'
+
 gem 'devise'
 
 gem 'bootstrap-sass'
